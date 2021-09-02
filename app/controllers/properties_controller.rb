@@ -1,4 +1,5 @@
 class PropertiesController < ApplicationController
+    before_action :set_property, only: [:show, :edit, :update]
     def index
         @properties = Property.all
     end
@@ -14,13 +15,10 @@ class PropertiesController < ApplicationController
         end
     end
     def show
-        @property = Property.find(params[:id])
     end
     def edit
-        @property = Property.find(params[:id])
     end
     def update
-        @property = Property.find(params[:id])
         if @property.update(property_params)
             redirect_to properties_path, notice: "物件情報を編集しました！"
         else
@@ -31,5 +29,8 @@ class PropertiesController < ApplicationController
     private
     def property_params
         params.require(:property).permit(:name, :rent, :address, :age, :content)
+    end
+    def set_property
+        @property = Property.find(params[:id])
     end
 end
