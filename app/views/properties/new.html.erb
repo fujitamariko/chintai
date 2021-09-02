@@ -1,4 +1,4 @@
-<h1>物件登録</h1>
+<h1>物件情報登録</h1>
 <%= form_with(model: @property, local: true) do |form| %>
 
     <% if @property.errors.any? %>
@@ -35,8 +35,8 @@
     <hr>
 
     <%= form.fields_for :nearest_stations do |form| %>
-    <% if form.index %>
-    <h3>最寄駅<%= form.index %></h3>
+    <% if form.index < 2 %>
+    <h3>最寄駅<%= form.index + 1 %></h3>
     <div class="fields">
       <%= form.label :'路線名' %><br>
       <%= form.text_field :line %>

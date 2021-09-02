@@ -1,4 +1,4 @@
-<h1>物件登録</h1>
+<h1>物件情報編集</h1>
 <%= form_with(model: @property, local: true) do |form| %>
 
     <% if @property.errors.any? %>
@@ -32,5 +32,26 @@
       <%= form.label :備考 %>
       <%= form.text_field :content %>
     </div>
+    <hr>
+
+    <%= form.fields_for :nearest_stations do |form| %>
+    <% if form.index < 2 %>
+    <h3>最寄駅<%= form.index + 1 %></h3>
+    <div class="fields">
+      <%= form.label :'路線名' %><br>
+      <%= form.text_field :line %>
+    </div>
+    <div class="fields">
+      <%= form.label :'駅名' %><br>
+      <%= form.text_field :station %>
+    </div>
+    <div class="fields">
+      <%= form.label :'徒歩分数' %><br>
+      <%= form.text_field :minuites_walk %>
+    </div>
+    <% end %>
+    <% end %>
+
     <%= form.submit %>
 <% end %>
+<%= link_to '物件一覧画面に戻る', properties_path %>
