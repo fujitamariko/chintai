@@ -6,8 +6,12 @@ class PropertiesController < ApplicationController
         @property = Property.new
     end
     def create
-        Property.create(property_params)
-        redirect_to new_property_path
+        @property = Property.new(property_params)
+        if @property.save
+            redirect_to properties_path, notice: "物件情報を登録しました！"
+        else
+            render :new
+        end
     end
     def show
         @property = Property.find(params[:id])
