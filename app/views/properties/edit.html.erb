@@ -35,7 +35,7 @@
     <hr>
 
     <%= form.fields_for :nearest_stations do |form| %>
-    <% if form.index < 3 %>
+    <% if form.index < 100 %>
     <h3>最寄駅<%= form.index + 1 %></h3>
     <div class="fields">
       <%= form.label :'路線名' %><br>
