@@ -1,0 +1,19 @@
+<h1>詳細ページ</h1>
+
+<p>物件名:<%= @property.name %></p>
+<p>賃料:<%= @property.rent %></p>
+<p>住所:<%= @property.address %></p>
+<p>築年数:<%= @property.age %></p>
+<p>備考:<%= @property.content %></p>
+<hr>
+
+ <% count = 1 %>
+<% @nearest_stations.each do |nearest_station| %>
+<h3>最寄駅 <%= count %></h3>
+<p>路線名:<%= nearest_station.line %></p>
+<p>駅名:<%= nearest_station.station %></p>
+<p>徒歩分数:<%= nearest_station.minuites_walk %></p>
+<% count += 1 %>
+<% end %>
+
+<%= link_to '物件一覧画面に戻る', properties_path %>
