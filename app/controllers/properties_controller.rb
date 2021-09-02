@@ -5,23 +5,27 @@ class PropertiesController < ApplicationController
     end
     def new
         @property = Property.new
+        @property.nearest_stations.build
     end
     def create
         @property = Property.new(property_params)
         if @property.save
             redirect_to properties_path, notice: "物件情報を登録しました！"
         else
+            @property.nearest_stations.build
             render :new
         end
     end
     def show
     end
     def edit
+        @property.nearest_stations.build
     end
     def update
         if @property.update(property_params)
             redirect_to properties_path, notice: "物件情報を編集しました！"
         else
+            @property.nearest_stations.build
             render :edit
         end
     end
