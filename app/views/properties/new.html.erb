@@ -1,5 +1,5 @@
 <h1>物件登録</h1>
-<%= form_with(model: Property.new, local: true) do |form| %>
+<%= form_with(model: @property, local: true) do |form| %>
     <div class="property_name">
       <%= form.label :物件名 %>
       <%= form.text_field :name %>
